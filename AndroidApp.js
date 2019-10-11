@@ -1,111 +1,119 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, {
+  Component,
+} from 'react';
 
-import React from 'react';
 import {
-  SafeAreaView,
+  AppRegistry,
   StyleSheet,
-  ScrollView,
-  View,
+  Platform,
   Text,
-  StatusBar,
+  View,
+  Alert,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
 
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  isFirstTime,
+  isRolledBack,
+  packageVersion,
+  currentVersion,
+  checkUpdate,
+  downloadUpdate,
+  switchVersion,
+  switchVersionLater,
+  markSuccess,
+} from 'react-native-update';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-               <Text style={styles.sectionDescription}>修改AndroidApp.js显示不同的内容.</Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+import _updateConfig from './update.json';
+const {appKey} = _updateConfig[Platform.OS];
+
+class MyProject extends Component {
+  componentDidMount(){
+    if (isFirstTime) {
+      Alert.alert('提示', '这是当前版本第一次启动,是否要模拟启动失败?失败将回滚到上一版本', [
+        {text: '是', onPress: ()=>{throw new Error('模拟启动失败,请重启应用')}},
+        {text: '否', onPress: ()=>{markSuccess()}},
+      ]);
+    } else if (isRolledBack) {
+      Alert.alert('提示', '刚刚更新失败了,版本被回滚.');
+    }
+  }
+  doUpdate = async (info) => {
+    try {
+      const hash = await downloadUpdate(info);
+      Alert.alert('提示', '下载完毕,是否重启应用?', [
+        {text: '是', onPress: ()=>{switchVersion(hash);}},
+        {text: '否',},
+        {text: '下次启动时', onPress: ()=>{switchVersionLater(hash);}},
+      ]);
+    } catch(err) {
+      Alert.alert('提示', '更新失败.');
+    }
+  };
+  checkUpdate = async () => {
+    // if (__DEV__) {
+    //   // 开发模式不支持热更新，跳过检查
+    //   return;
+    // }
+    let info;
+    try {
+      info = await checkUpdate(appKey);
+    } catch (err) {
+      console.warn(err);
+      return;
+    }
+    if (info.expired) {
+      Alert.alert('提示', '您的应用版本已更新,请前往应用商店下载新的版本', [
+        {text: '确定', onPress: ()=>{info.downloadUrl && Linking.openURL(info.downloadUrl)}},
+      ]);
+    } else if (info.upToDate) {
+      Alert.alert('提示', '您的应用版本已是最新.');
+    } else {
+      Alert.alert('提示', '检查到新的版本'+info.name+',是否下载?\n'+ info.description, [
+        {text: '是', onPress: ()=>{this.doUpdate(info)}},
+        {text: '否',},
+      ]);
+    }
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          欢迎使用热更新服务!!!!!!!!更新后
+        </Text>
+        <Text style={styles.instructions}>
+          这是版本一 {'\n'}
+          当前包版本号: {packageVersion}{'\n'}
+          当前版本Hash: {currentVersion||'(空)'}{'\n'}
+        </Text>
+        <TouchableOpacity onPress={this.checkUpdate}>
+          <Text style={styles.instructions}>
+            点击这里检查更新
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });
-
-export default App;
+export default MyProject
+// AppRegistry.registerComponent('rnProject', () => MyProject);
