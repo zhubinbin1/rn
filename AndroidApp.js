@@ -80,7 +80,7 @@ class MyProject extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          欢迎使用热更新服务!!!!!!!!更新后
+          欢迎使用热更新服务--AndroidApp
         </Text>
         <Text style={styles.instructions}>
           这是版本一 {'\n'}
