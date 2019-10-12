@@ -1,0 +1,35 @@
+yarn add v1.17.3
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 24 new dependencies.
+info Direct dependencies
+└─ eslint@6.5.1
+info All dependencies
+├─ acorn-jsx@5.0.2
+├─ acorn@7.1.0
+├─ chardet@0.7.0
+├─ doctrine@3.0.0
+├─ eslint-scope@5.0.0
+├─ eslint@6.5.1
+├─ espree@6.1.1
+├─ esquery@1.0.1
+├─ file-entry-cache@5.0.1
+├─ flat-cache@2.0.1
+├─ flatted@2.0.1
+├─ glob-parent@5.1.0
+├─ ignore@4.0.6
+├─ import-fresh@3.1.0
+├─ is-extglob@2.1.1
+├─ is-glob@4.0.1
+├─ json-stable-stringify-without-jsonify@1.0.1
+├─ parent-module@1.0.1
+├─ rxjs@6.5.3
+├─ strip-json-comments@3.0.1
+├─ table@5.4.6
+├─ text-table@0.2.0
+├─ v8-compile-cache@2.1.0
+└─ write@1.0.3
+Done in 7.74s.

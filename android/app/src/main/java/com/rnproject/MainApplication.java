@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.microsoft.codepush.react.CodePush;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
@@ -12,12 +13,16 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import cn.reactnative.modules.update.UpdateContext;
 
 public class MainApplication extends Application implements ReactApplication {
 
     private final ReactNativeHost mReactNativeHost =
             new ReactNativeHost(this) {
+                @Override
+                protected String getJSBundleFile() {
+                    return CodePush.getJSBundleFile();
+                }
+
                 @Override
                 public boolean getUseDeveloperSupport() {
                     return BuildConfig.DEBUG;
@@ -33,14 +38,6 @@ public class MainApplication extends Application implements ReactApplication {
                     return packages;
                 }
 
-                protected String getJSBundleFile() {
-                    return UpdateContext.getBundleUrl(MainApplication.this);
-                }
-
-                @Override
-                protected String getJSMainModuleName() {
-                    return "index";
-                }
             };
 
     @Override
