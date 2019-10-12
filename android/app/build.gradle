@@ -76,7 +76,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js",
+        //此地方是生成release包寻找的js
+    entryFile: "index.android.js",
     enableHermes: false,  // clean and rebuild if changing
 ]
 

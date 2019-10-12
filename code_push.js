@@ -11,11 +11,12 @@ import {
 //http://huqi.tech/index.php/2018/09/29/code-push_hot_update/
 // 将js文件打包为bundle文件
 // react-native bundle --platform 平台 --dev 是否调试 --entry-file 入口文件 --bundle-output 打包后输出的bundle文件路径 --assets-dest 资源输出目录
-// react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+// react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
 // 将bundle文件推送给微软appcenter云端
 // code-push release <appName> <updateContents> <targetBinaryVersion>
 // code-push release rntest ./bundles/index.android.bundle 1.0.0 --deploymentName Production  --description "对bundle文件进行加密" --mandatory true
-// code-push release rntest ./android/app/src/main/assets/index.android.bundle --description "第一次上传测试" --mandatory true
+// code-push release rntest ./android/app/src/main/assets/index.android.bundle 1.0.0 --description "第一次上传测试22" --mandatory false
+// : code-push release <appName> <updateContentsPath> <targetBinaryVersion> [options]
 
 import CodePush from "react-native-code-push";
 
@@ -114,7 +115,7 @@ class App extends Component<{}> {
           <Text style={styles.syncButton}>Press for dialog-driven sync</Text>
         </TouchableOpacity>
         {progressView}
-        <Image style={styles.image} resizeMode={"contain"} source={require("./images/laptop_phone_howitworks.png")}/>
+        <Image style={styles.image} resizeMode={"contain"} source={require("./images/icon_test.png")}/>
         <TouchableOpacity onPress={this.toggleAllowRestart.bind(this)}>
           <Text style={styles.restartToggleButton}>Restart { this.state.restartAllowed ? "allowed" : "forbidden"}</Text>
         </TouchableOpacity>
