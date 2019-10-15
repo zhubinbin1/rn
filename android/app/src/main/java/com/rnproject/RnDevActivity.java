@@ -14,7 +14,7 @@ public class RnDevActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "rnProject";
+        return "dev_test";
     }
 
 }

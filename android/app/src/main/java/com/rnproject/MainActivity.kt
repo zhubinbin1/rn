@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         develop.setOnClickListener {
-            startActivity(Intent(this@MainActivity,RnListActivity::class.java))
+            startActivity(Intent(this@MainActivity,RnDevActivity::class.java))
         }
         list.setOnClickListener {
-            startActivity(Intent(this@MainActivity,RnDevActivity::class.java))
+            startActivity(Intent(this@MainActivity,RnListActivity::class.java))
         }
     }
 }

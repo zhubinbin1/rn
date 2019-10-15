@@ -10,7 +10,7 @@ public class RnListActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "rnProject";
+        return "devlist";
     }
 
 }
