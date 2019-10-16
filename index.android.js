@@ -3,11 +3,11 @@
  */
 
 import {AppRegistry} from 'react-native';
-import code_push_hand from './code_push_hand.js';
+import code_push_hand from './js/test/code_push_hand.js';
 import {name as appName} from './app.json';
-import devlist from './devlist.js';
-import devTest from './dev_test.js';
-import navigation from './pages/NavigatorPage'
+import devlist from './js/test/devlist.js';
+import devTest from './js/test/dev_test.js';//develop测试页面
+import navigation from './pages/NavigatorPage'//导航
 
 AppRegistry.registerComponent("dev_test", () => devTest);
 AppRegistry.registerComponent("devlist", () => devlist);
