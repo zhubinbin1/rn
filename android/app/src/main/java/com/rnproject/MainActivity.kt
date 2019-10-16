@@ -18,5 +18,8 @@ class MainActivity : AppCompatActivity() {
         list.setOnClickListener {
             startActivity(Intent(this@MainActivity,RnListActivity::class.java))
         }
+        nav.setOnClickListener {
+            startActivity(Intent(this@MainActivity,RnNavigationActivity::class.java))
+        }
     }
 }
