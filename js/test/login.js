@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import JsonUtil from './utils/JsonUtil'
+import getNet from './utils/getNet'
 import {
   Platform,
   StyleSheet,
@@ -18,55 +19,6 @@ import {
 //'http://ip.taobao.com/service/getIpInfo.php?ip=59.108.51.32'
 // let url = 'http://dev.api.o-pay.in/user/login';
  class Login extends Component<{}> {
-  async getMoviesFromApi() {
-      try {
-        let response = await fetch(
-          'https://facebook.github.io/react-native/movies.json',
-        );
-        let responseJson = await response.json();
-        console.log("responseJson===:"+responseJson.movies[0].title)
-        return responseJson.movies;
-      } catch (error) {
-        console.error(error);
-      }
-}
- getMoviesFromApiAsync() {
-    return fetch('https://facebook.github.io/react-native/movies.json')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log("responseJson===:"+responseJson.movies[0].title)
-        return responseJson.movies;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-
-  async login(){
-    try {
-      let param = {
-            "user_token":"{\"firstName\":\"天王\",\"lastName\":\"盖地虎\",\"phoneNumber\":\"022222223200\"}",
-            "expire":"24h0ms"
-            }
-      let response = await fetch('http://dev.api.o-pay.in/user/login',
-        {
-          method:'POST',
-          cache:'default',
-          headers:({
-            'user-agent': 'Mozilla/4.0 MDN Example',
-            'content-type': 'application/json'
-          }),
-          body:JsonUtil.jsonToStr(param)
-        });
-      let responseJson = await response.json();
-      console.log("responseJson:==="+(responseJson));
-      return responseJson;
-    } catch (error) {
-          console.log('错误问题: ', error.message);
-          }
- }
-
 
   render() {
     return (
@@ -90,7 +42,7 @@ import {
         <View style={[styles.view2,{marginLeft: 50,marginRight: 50}]}>
             <Button title="Sign in"
             onPress={()=>{
-                this.login()
+                getNet.login()
             }}/>
         </View>
         <View style={styles.view3}>
