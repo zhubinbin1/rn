@@ -10,6 +10,7 @@ import devlist from './devlist'
 import moneyMangement from'./money_mangement'
 import login from './login'
 import home from './home'
+import leftDrawer from './leftDrawer'
 import{createAppContainer} from 'react-navigation';
 import {
   Platform,
@@ -27,7 +28,8 @@ const Drawnav=createStackNavigator({
   moneyMangement:{
     screen:moneyMangement,
     navigationOptions: ({ navigation }) => ({
-        title: (navigation.state.params.name)+"moneyMangement-动态",
+      title:"moneyMangement",
+        // title: (navigation.state.params.name)+"moneyMangement-动态",
       }),
   },
   devlist:{
@@ -47,12 +49,18 @@ const Drawnav=createStackNavigator({
     navigationOptions: ({ navigation }) => ({
         title: "home页面",
       }),
+  },
+  leftDrawer:{
+    screen:leftDrawer,
+    navigationOptions: ({ navigation }) => ({
+        title: "leftDrawer页面",
+      }),
   }
 
 
 },
 {
-  initialRouteName:'login',
+  initialRouteName:'leftDrawer',
 }
 )
 

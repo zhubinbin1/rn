@@ -8,6 +8,8 @@ import {
   Platform,
   StyleSheet,
   Text,
+  FlatList,
+  Image,
   View
 } from 'react-native';
 
@@ -16,9 +18,15 @@ import {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to moneyMangement
-        </Text>
+        <View style={styles.header}>
+          <Image></Image>
+        </View>
+        <View style={styles.item}>
+          <FlatList></FlatList>
+        </View>
+        <View style={styles.bottom}>
+
+        </View>
       </View>
 );
   }
@@ -32,14 +40,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  desc:{
+
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  header:{
+
   },
+  bottom:{
+
+  }
 });
