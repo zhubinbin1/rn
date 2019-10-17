@@ -8,7 +8,7 @@ success Saved 24 new dependencies.
 info Direct dependencies
 └─ eslint@6.5.1
 info All dependencies
-├─ acorn-jsx@5.0.2
+├─ acorn-jsx@5.1.0
 ├─ acorn@7.1.0
 ├─ chardet@0.7.0
 ├─ doctrine@3.0.0
@@ -32,4 +32,4 @@ info All dependencies
 ├─ text-table@0.2.0
 ├─ v8-compile-cache@2.1.0
 └─ write@1.0.3
-Done in 7.74s.
+Done in 8.79s.

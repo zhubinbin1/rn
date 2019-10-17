@@ -6,8 +6,8 @@
  */
 
 import React, { Component } from 'react';
-import devlist from './devlist'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import devlist from './devlist';
+import money_mangement from'./money_mangement';
 import{createAppContainer} from 'react-navigation';
 import {
   Platform,
@@ -17,49 +17,26 @@ import {
   Text,
   View,
 } from 'react-native';
-import {createDrawerNavigator} from 'react-navigation-drawer'
-import {DrawerItem} from 'react-navigation'
-const CustomDrawerContentComponent = (props) => (
-    <ScrollView>
-        <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
-            <View style={{width:200,height:100,backgroundColor:'red'}}></View>
-        </SafeAreaView>
-    </ScrollView>
-);
-const Drawnav=createDrawerNavigator({
+// import {createDrawerNavigator} from 'react-navigation-drawer'
+// import React, { Component } from 'react';
+import {createStackNavigator} from 'react-navigation-stack';
+// import { createDrawerNavigator } from 'react-navigation-drawer';
+const Drawnav=createStackNavigator({
   devlist:{
     screen:devlist,
+  },
+  money_mangement:{
+    screen:money_mangement,
     // navigationOptions:{
-    //   drawerLabel:"devlist",
-    //   drawerIcon:({tintColor})=>{
-    //   return  <MaterialIcons
-    //       name ={"drafts"}
-    //       size = {24}
-    //     style={{color: tintColor}}/>
-    //   }
+    //   title:"devlist2"
     // }
   },
-  devlist2:{
-    screen:devlist
-  }
-},{
-  order: ['devlist', 'devlist2'],//routeNames数组，用于定义抽屉项目的顺序。
-  drawerLockMode: 'unlocked',//设置是否响应手势
-  initialRouteName:"devlist",
-  drawerPosition:'left',
-  drawerWidth: 250, //抽屉的宽度或返回的功能。
-  drawerPosition: 'left', //选项是left或right。默认是left位置。
-  useNativeAnimations: false, //启用原生动画。默认是true。
-  drawerBackgroundColor: 'pink', //使用抽屉背景获取某种颜色。默认是white。
-  contentOptions:{
-    activeTintColor:"#ccc",
-  },
-  contentComponent:CustomDrawerContentComponent,
-  }
+
+}
 )
 
 const App2 =createAppContainer(Drawnav);
-export default App2;
+
 class App extends Component<{}>{
   render(){
     return(
@@ -69,7 +46,7 @@ class App extends Component<{}>{
     )
   }
 }
-
+export default App2;
 const styles = StyleSheet.create({
   container:{
     flex: 1,
