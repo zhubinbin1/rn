@@ -9,7 +9,6 @@ import React, { Component } from 'react';
 import devlist from './devlist'
 import moneyMangement from'./money_mangement'
 import login from './login'
-import home from './home'
 import{createAppContainer} from 'react-navigation';
 import {
   Platform,
@@ -23,7 +22,7 @@ import {
 // import React, { Component } from 'react';
 import {createStackNavigator} from 'react-navigation-stack';
 // import { createDrawerNavigator } from 'react-navigation-drawer';
-const Drawnav=createStackNavigator({
+const Nav=createStackNavigator({
   moneyMangement:{
     screen:moneyMangement,
     navigationOptions: ({ navigation }) => ({
@@ -42,32 +41,17 @@ const Drawnav=createStackNavigator({
         title: "login",
       }),
   },
-  home:{
-    screen:home,
-    navigationOptions: ({ navigation }) => ({
-        title: "home",
-      }),
-  }
 
 
 },
 {
-  initialRouteName:'home',
+  initialRouteName:'login',
 }
 )
 
-const App2 =createAppContainer(Drawnav);
+const RnApp =createAppContainer(Nav);
 
-class App extends Component<{}>{
-  render(){
-    return(
-      <View style={styles.container}>
-        <Text style={styles.text}>研发测试</Text>
-      </View>
-    )
-  }
-}
-export default App2;
+export default RnApp;
 const styles = StyleSheet.create({
   container:{
     flex: 1,

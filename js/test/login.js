@@ -8,25 +8,22 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,
-  Button
+  View
 } from 'react-native';
 
- class Devlist extends Component<{}> {
+ class Login extends Component<{}> {
 
   render() {
-    const {navigate} =this.props.navigation;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to Devlist!
+          Welcome to Login
         </Text>
-
       </View>
 );
   }
 }
-export default Devlist;
+export default Login;
 
 const styles = StyleSheet.create({
   container: {
@@ -34,5 +31,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
   },
 });

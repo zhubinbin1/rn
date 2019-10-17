@@ -11,19 +11,19 @@ import {
   View
 } from 'react-native';
 
- class App extends Component<{}> {
+ class moneyMangement extends Component<{}> {
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!!!!
+          Welcome to moneyMangement
         </Text>
       </View>
 );
   }
 }
-export default App;
+export default moneyMangement;
 
 const styles = StyleSheet.create({
   container: {
