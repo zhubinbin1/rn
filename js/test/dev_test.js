@@ -52,7 +52,7 @@ const Drawnav=createStackNavigator({
 
 },
 {
-  initialRouteName:'home',
+  initialRouteName:'login',
 }
 )
 
