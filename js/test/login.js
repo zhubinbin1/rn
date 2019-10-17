@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import JsonUtil from './utils/JsonUtil'
+
 import getNet from './utils/getNet'
 import {
   Platform,
@@ -42,7 +42,10 @@ import {
         <View style={[styles.view2,{marginLeft: 50,marginRight: 50}]}>
             <Button title="Sign in"
             onPress={()=>{
-                getNet.login()
+              getNet.login((data)=>{
+                  console.log("responseJson:==="+(data));
+              })
+
             }}/>
         </View>
         <View style={styles.view3}>

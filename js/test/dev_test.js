@@ -27,25 +27,25 @@ const Drawnav=createStackNavigator({
   moneyMangement:{
     screen:moneyMangement,
     navigationOptions: ({ navigation }) => ({
-        title: (navigation.state.params.name)+"moneyMangement",
+        title: (navigation.state.params.name)+"moneyMangement-动态",
       }),
   },
   devlist:{
     screen:devlist,
     navigationOptions: ({ navigation }) => ({
-        title: "devlist",
+        title: "devlist页面",
       }),
   },
   login:{
     screen:login,
     navigationOptions: ({ navigation }) => ({
-        title: "login",
+        title: "login页面",
       }),
   },
   home:{
     screen:home,
     navigationOptions: ({ navigation }) => ({
-        title: "home",
+        title: "home页面",
       }),
   }
 
