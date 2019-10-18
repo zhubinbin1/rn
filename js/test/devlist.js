@@ -15,7 +15,7 @@ import {
  class Devlist extends Component<{}> {
 
   render() {
-    const {navigate} =this.props.navigation;
+    const {navigate} =this.props&&this.props.navigation;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

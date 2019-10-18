@@ -62,28 +62,20 @@ const Drawnav=createStackNavigator({
     screen:OrideHome,
     navigationOptions: ({ navigation }) => ({
         title: "OrideHome页面",
+        header:null,
       }),
   }
 
 
 },
 {
-  initialRouteName:'home',
+  initialRouteName:'moneyMangement',
 }
 )
 
-const App2 =createAppContainer(Drawnav);
+const App =createAppContainer(Drawnav);
 
-class App extends Component<{}>{
-  render(){
-    return(
-      <View style={styles.container}>
-        <Text style={styles.text}>研发测试</Text>
-      </View>
-    )
-  }
-}
-export default App2;
+export default App;
 const styles = StyleSheet.create({
   container:{
     flex: 1,

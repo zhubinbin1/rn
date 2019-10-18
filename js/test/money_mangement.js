@@ -1,6 +1,35 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
+ {
+    "err": null,
+    "data_list": [
+        {
+            "title": "单单奖励1",
+            "type": 1004,
+            "status": 1,
+            "start_time": 1570852446,
+            "end_time": 1571457246,
+            "skip_url": "http: //dev.api.o-pay.in/activity/#/onlineTime?act_id=24"
+        },
+        {
+            "title": "单单奖励2",
+            "type": 1005,
+            "status": 1,
+            "start_time": 1570852446,
+            "end_time": 1571457246,
+            "skip_url": "http: //dev.api.o-pay.in/activity/#/onlineTime?act_id=24"
+        },
+        {
+            "title": "单单奖励3",
+            "type": 1006,
+            "status": 1,
+            "start_time": 1570852446,
+            "end_time": 1571457246,
+            "skip_url": "http: //dev.api.o-pay.in/activity/#/onlineTime?act_id=24"
+        }
+    ]
+}
  */
 
 import React, { Component } from 'react';
@@ -17,10 +46,10 @@ import {
   View
 } from 'react-native';
 import TitleBar from './MoneyManagerMentBar'
-const HEAD_DATA = [{price:"N0.00",name:"Todays income"},
-                  {price:"N0.00",name:"Total rides today"},
-                  {price:"1.18",name:"Total hours online today"},
-                  {price:"10%",name:"cooperation score"}]
+const HEAD_DATA = [{price:"₦0.00",name:"Estimated income for today"},
+                  {price:"₦0.00",name:"Today's commission"},
+                  {price:"₦11.18",name:"Cashless income"},
+                  {price:"₦100",name:"Cash income"}]
 const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":1004,\"status\":1,\"start_time\":1570852446,\"end_time\":1571457246,\"skip_url\":\"http: //dev.api.o-pay.in/activity/#/onlineTime?act_id=24\"},{\"title\":\"单单奖励2\",\"type\":1005,\"status\":1,\"start_time\":1570852446,\"end_time\":1571457246,\"skip_url\":\"http: //dev.api.o-pay.in/activity/#/onlineTime?act_id=24\"},{\"title\":\"单单奖励3\",\"type\":1006,\"status\":2,\"start_time\":1570852446,\"end_time\":1571457246,\"skip_url\":\"http: //dev.api.o-pay.in/activity/#/onlineTime?act_id=24\"}]}"
  class moneyMangement extends Component<{}> {
    constructor(props){
@@ -30,12 +59,12 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
      }
    }
    layout(data){
-     return <View style={{flexDirection: 'column',alignItems: 'center',flex: 1}}>
-       <Text style={{color:'white',fontSize: 15}}>
-         {data.price}
-       </Text>
-       <Text style={{color:'white', fontSize: 15}}>
+     return <View style={{flexDirection: 'column',alignItems: 'flex-start',marginLeft: 20,flex: 1}}>
+       <Text style={{color:'white', fontSize: 12}}>
          {data.name}
+       </Text>
+       <Text style={{color:'white',fontWeight: 'bold',fontSize: 15}}>
+         {data.price}
        </Text>
      </View>
    }
@@ -56,29 +85,8 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
         {this.layout(HEAD_DATA[3])}
       </View>
   </View>
-    // let arr = []
-    // HEAD_DATA.map((data)=>{
-    //   arr.push(
-    //     this.layout(data)
-    //   )
-    // })
-    // return arr
   }
 
-  viewPager(){
-    return (
-    <ViewPagerAndroid
-      style={styles.viewPager}
-      initialPage={0}>
-      <View style={styles.pageStyle} key="1">
-        <Text style={{color:'white'}}>图片1</Text>
-      </View>
-      <View style={styles.pageStyle} key="2">
-        <Text style={{color:'white'}}>图片2</Text>
-      </View>
-    </ViewPagerAndroid>
-  );
-  }
   onClosed=()=>{
     Alert.alert("关闭")
   }
@@ -96,7 +104,7 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
         <TouchableOpacity style={{padding:10,borderColor: 'black',borderRadius: 5,elevation: 10,backgroundColor:'#eee'}}>
         <View>
           <Text>{item.title}</Text>
-            <Text style={{color: "#555",marginTop: 5}}>{item.start_time}-{item.end_time}</Text>
+            <Text style={{color: "#555",marginTop: 5}}>{(item.start_time*1000)}-{item.end_time}</Text>
         </View>
         <View style={{position: 'absolute',right: 10,top: 10}}>
         {
@@ -120,9 +128,6 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
         <View style={styles.header}>
           {this.headView()}
         </View>
-        <View style={styles.middle}>
-          {this.viewPager()}
-        </View>
         <View style={styles.bottom}>
           <FlatList
             data={this.state.showData.data_list}
@@ -144,8 +149,6 @@ const styles = StyleSheet.create({
 
   header:{
 
-  },
-  middle:{
   },
   bottom:{
 
