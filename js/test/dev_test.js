@@ -8,6 +8,7 @@
 import React, { Component } from 'react';
 import devlist from './devlist'
 import moneyMangement from'./money_mangement'
+import OrideHome from './OrideHome'
 import login from './login'
 import home from './home'
 import leftDrawer from './leftDrawer'
@@ -56,12 +57,18 @@ const Drawnav=createStackNavigator({
     navigationOptions: ({ navigation }) => ({
         title: "leftDrawer页面",
       }),
+  },
+  OrideHome:{
+    screen:OrideHome,
+    navigationOptions: ({ navigation }) => ({
+        title: "OrideHome页面",
+      }),
   }
 
 
 },
 {
-  initialRouteName:'moneyMangement',
+  initialRouteName:'home',
 }
 )
 

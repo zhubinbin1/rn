@@ -48,6 +48,13 @@ import {
                     }
                     />
               </View>
+              <View style={styles.pButton}>
+                <Button title="OrideHome"
+                    onPress={
+                      ()=>navigate('OrideHome',{name:"你好"})
+                    }
+                    />
+              </View>
           </View>
       </View>
 );
@@ -69,5 +76,8 @@ const styles = StyleSheet.create({
   pButton: {
     flexDirection: 'row',
     marginLeft: 5,
+    marginTop: 10,
+    alignItems: 'center',
+    flexWrap: 'wrap',
   },
 });
