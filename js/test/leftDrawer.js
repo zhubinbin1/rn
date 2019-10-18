@@ -24,7 +24,7 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
         table.push(
           <View style={styles.item}>
           <Image
-            source={require('./imgs/ride_ic_launcher.png')}
+            source={require('./imgs/ride_ic_set.png')}
             style={{width: 20, height: 20}}
             resizeMode='cover'
             resizeMethod='scale'/>
@@ -56,7 +56,7 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
       <View style={styles.container}>
         <View style={{marginTop: 20,marginBottom: 40}}>
           <Image
-          source={require('./imgs/ride_ic_launcher.png')}
+          source={require('./imgs/ride_ic_default_avatar.png')}
           style={{width: 80, height: 80}}
           resizeMode='cover'
           resizeMethod='scale'></Image>

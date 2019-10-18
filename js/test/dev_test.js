@@ -29,6 +29,7 @@ const Drawnav=createStackNavigator({
     screen:moneyMangement,
     navigationOptions: ({ navigation }) => ({
       title:"moneyMangement",
+      header:null,
         // title: (navigation.state.params.name)+"moneyMangement-动态",
       }),
   },
@@ -60,7 +61,7 @@ const Drawnav=createStackNavigator({
 
 },
 {
-  initialRouteName:'leftDrawer',
+  initialRouteName:'moneyMangement',
 }
 )
 

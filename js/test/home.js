@@ -41,6 +41,13 @@ import {
                     }
                     />
               </View>
+              <View style={styles.pButton}>
+                <Button title="leftDrawer"
+                    onPress={
+                      ()=>navigate('leftDrawer',{name:"你好"})
+                    }
+                    />
+              </View>
           </View>
       </View>
 );
