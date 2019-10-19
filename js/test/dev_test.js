@@ -11,6 +11,7 @@ import moneyMangement from'./money_mangement'
 import OrideHome from './OrideHome'
 import login from './login'
 import home from './home'
+import ViewTest from './ViewTest'
 import leftDrawer from './leftDrawer'
 import{createAppContainer} from 'react-navigation';
 import {
@@ -64,12 +65,19 @@ const Drawnav=createStackNavigator({
         title: "OrideHome页面",
         header:null,
       }),
-  }
+  },
+  ViewTest:{
+    screen:ViewTest,
+    navigationOptions: ({ navigation }) => ({
+        title: "ViewTest页面",
+        header:null,
+      }),
+  },
 
 
 },
 {
-  initialRouteName:'moneyMangement',
+  initialRouteName:'home',
 }
 )
 

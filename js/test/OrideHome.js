@@ -126,6 +126,7 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
         <View style={styles.bottom}>
           <FlatList
             data={this.state.showData.data_list}
+            keyExtractor={(item: object, index: number) =>index+""}
             renderItem={({item}) => this._renderItem(item)}
             ></FlatList>
         </View>

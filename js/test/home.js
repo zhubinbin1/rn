@@ -55,6 +55,13 @@ import {
                     }
                     />
               </View>
+              <View style={styles.pButton}>
+                <Button title="ViewTest"
+                    onPress={
+                      ()=>navigate('ViewTest',{name:"你好"})
+                    }
+                    />
+              </View>
           </View>
       </View>
 );
