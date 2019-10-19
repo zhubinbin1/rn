@@ -26,7 +26,7 @@
             "status": 1,
             "start_time": 1570852446,
             "end_time": 1571457246,
-            "skip_url": "http: //dev.api.o-pay.in/activity/#/onlineTime?act_id=24"
+            "skip_url": "https://www.baidu.com"
         }
     ]
 }

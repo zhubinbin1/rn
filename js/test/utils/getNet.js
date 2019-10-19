@@ -16,13 +16,14 @@ import {
   Button,
 } from 'react-native';
  class getNet extends Component {
-     static  async getMoviesFromApi() {
+     static  async getMoviesFromApi(callBack) {
         try {
           let response = await fetch(
             'https://facebook.github.io/react-native/movies.json',
           );
           let responseJson = await response.json();
           console.log("responseJson===:"+responseJson.movies[0].title)
+          callBack(responseJson)
           return responseJson.movies;
         } catch (error) {
           console.error(error);
@@ -52,7 +53,7 @@ import {
             method:'POST',
             cache:'default',
             headers:({
-              'user-agent': 'Mozilla/4.0 MDN Example',
+              'user-agent': 'Android/9/Xiaomi/Redmi 7/driver/4.11.1000/8C234EAA2621D4DCA075AAD715FD5EFE/ead40cac8079f2e7825835dd118c318b/CN/en/39.90993/116.416735/network/1571452092',
               'content-type': 'application/json'
             }),
             body:JsonUtil.jsonToStr(param)

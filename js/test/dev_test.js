@@ -77,7 +77,7 @@ const Drawnav=createStackNavigator({
 
 },
 {
-  initialRouteName:'home',
+  initialRouteName:'ViewTest',
 }
 )
 
