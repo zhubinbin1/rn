@@ -40,6 +40,7 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
      </View>
    }
   headView(){
+    let navigation = this.props.navigation
   return <View style={{flexDirection: 'column',backgroundColor: '#222'}}>
       <View style={{flexDirection: 'row',justifyContent: 'space-between',
         paddingTop: 10,
@@ -80,7 +81,7 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
   );
   }
   onClosed=()=>{
-    Alert.alert("关闭")
+    this.props.onClosed&&this.props.onClosed()
   }
 
   onHelp=()=>{
@@ -113,7 +114,7 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
     return (
       <View style={styles.container}>
 
-          <TitleBar title="moneyMangement"
+          <TitleBar title="orderHome"
             onHelp={this.onHelp}
             onClosed={this.onClosed}
              />

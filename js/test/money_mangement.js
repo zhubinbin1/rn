@@ -93,7 +93,8 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
   }
 
   onClosed=()=>{
-    Alert.alert("关闭")
+  //  Alert.alert("关闭")
+    this.props.navigation&&this.props.navigation.goBack()
   }
 
   onHelp=()=>{

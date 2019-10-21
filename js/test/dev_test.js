@@ -51,6 +51,7 @@ const Drawnav=createStackNavigator({
     screen:home,
     navigationOptions: ({ navigation }) => ({
         title: "home页面",
+        header:null
       }),
   },
   leftDrawer:{
@@ -77,7 +78,7 @@ const Drawnav=createStackNavigator({
 
 },
 {
-  initialRouteName:'ViewTest',
+  initialRouteName:"home",
 }
 )
 

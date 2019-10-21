@@ -10,6 +10,8 @@ import {
   Text,
   FlatList,
   Image,
+  Alert,
+  TouchableOpacity,
   View
 } from 'react-native';
 
@@ -17,41 +19,89 @@ const LIST_DATA = [{title:"Money management",icon:"./imgs/ride_ic_launcher.png"}
 const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
 
  class LeftDrawer extends Component<{}> {
-   lItem(){
-     let table =[]
-      for(let i=0;i<LIST_DATA.length;i++){
-        let data = LIST_DATA[i];
-        table.push(
-          <View style={styles.item}>
-          <Image
-            source={require('./imgs/ride_ic_set.png')}
-            style={{width: 20, height: 20}}
-            resizeMode='cover'
-            resizeMethod='scale'/>
-            <Text style={{marginLeft: 10,fontSize: 15}}>{data.title}</Text>
-          </View>
-        )
-      }
-     return table
+
+   middleItem(){
+
+     return (
+       <View>
+       <TouchableOpacity style={styles.item}
+         onPress={
+           ()=>{
+             this.navigation.navigate('moneyMangement', {name: 'Jane'})
+           }
+         }
+         >
+       <Image
+         source={require("./imgs/ride_ic_money.png")}
+         style={{width: 20, height: 20}}
+         resizeMode='cover'
+         resizeMethod='scale'/>
+         <Text style={{marginLeft: 10,fontSize: 15}}>{LIST_DATA[0].title}</Text>
+       </TouchableOpacity>
+       <TouchableOpacity style={styles.item}
+         onPress={
+           ()=>{
+
+           }
+         }
+         >
+           <Image
+             source={require("./imgs/ride_ic_money.png")}
+             style={{width: 20, height: 20}}
+             resizeMode='cover'
+             resizeMethod='scale'/>
+           <Text style={{marginLeft: 10,fontSize: 15}}>{LIST_DATA[1].title}</Text>
+        </TouchableOpacity>
+       <TouchableOpacity style={styles.item}
+         onPress={
+           ()=>{
+
+           }
+         }
+         >
+         <Image
+           source={require("./imgs/ride_ic_tel.png")}
+           style={{width: 20, height: 20}}
+           resizeMode='cover'
+           resizeMethod='scale'/>
+         <Text style={{marginLeft: 10,fontSize: 15}}>{LIST_DATA[2].title}</Text>
+        </TouchableOpacity>
+       <TouchableOpacity style={styles.item}
+         onPress={
+           ()=>{
+
+           }
+         }
+         >
+         <Image
+           source={require("./imgs/ride_ic_set.png")}
+           style={{width: 20, height: 20}}
+           resizeMode='cover'
+           resizeMethod='scale'/>
+          <Text style={{marginLeft: 10,fontSize: 15}}>{LIST_DATA[3].title}</Text>
+         </TouchableOpacity>
+       </View>
+     )
    }
-   bItem(){
+   bottomItem(){
      let table =[]
       for(let i=0;i<BOTTOM_DATA.length;i++){
         let data = BOTTOM_DATA[i];
         table.push(
-          <View style={styles.bottom}>
+          <View key={i}>
           <Image
             source={require('./imgs/ride_ic_launcher.png')}
-            style={{width: 20, height: 20,alignSelf: 'center'}}
+            style={{width: 20, height: 20}}
             resizeMode='cover'
             resizeMethod='scale'/>
-            <Text style={{fontSize: 12,alignSelf: 'center'}}>{data}</Text>
+            <Text style={{fontSize: 12}}>{data}</Text>
           </View>
         )
       }
      return table
    }
   render() {
+    this.navigation = this.props.navigation
     return (
       <View style={styles.container}>
         <View style={{marginTop: 20,marginBottom: 40}}>
@@ -63,9 +113,9 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
           <Text style={{marginTop: 10,color:'#345',fontSize: 20}}>zhubinbin</Text>
           <Text style={{marginTop: 5,color:'#666',fontSize: 14}}>描述信息01111111111</Text>
         </View>
-        {this.lItem()}
-        <View style={{flexDirection: 'row',alignItems: 'flex-end',flex: 1,justifyContent:'space-around',}}>
-        {this.bItem()}
+        {this.middleItem()}
+        <View style={{flexDirection:'row',flex: 1,alignItems: 'flex-end',justifyContent: 'space-between',position: 'relative',marginBottom: 10}}>
+          {this.bottomItem()}
         </View>
       </View>
 );
@@ -77,7 +127,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingLeft: 40,
-    backgroundColor: '#999',
     marginRight: 100,
   },
   item:{

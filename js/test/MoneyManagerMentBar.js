@@ -7,11 +7,11 @@ export default class MoneyManagerMentBar extends Component{
     return(<View style={styles.container}>
       <TouchableOpacity
         onPress={this.props.onClosed}>
-          <Image style={{width: 30,height: 30}}
+          <Image style={{width: 20,height: 20}}
           resizeMode='contain'
-          source={require('./imgs/ride_icon_close.png')}/>
+          source={require('./imgs/oride_back.png')}/>
       </TouchableOpacity>
-          <Text>{this.props.title}题目</Text>
+          <Text>{this.props.title}</Text>
       <TouchableOpacity
           onPress={this.props.onHelp}>
               <Image style={{width: 30,height: 30}}

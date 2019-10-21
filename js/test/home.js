@@ -10,61 +10,80 @@ import {
   Text,
   View,
   Button,
+  DrawerLayoutAndroid,
 } from 'react-native';
+import OrideHome from './OrideHome'
+import LeftDrawer from './leftDrawer'
 
  class Home extends Component<{}> {
+   leftDrawerView=()=>{
+     return <LeftDrawer {...this.props}/>
+   }
 
+   layerss =()=> {
+    return ( <View >
+            <View style={styles.pButton}>
+              <Button title="MoneyMangement"
+                onPress={
+                  ()=>navigate('moneyMangement',{name:"你好"})
+                }
+                />
+            <View style={styles.pButton}>
+              <Button title="login"
+                  onPress={
+                    ()=>navigate('login',{name:"你好"})
+                  }
+                  />
+            </View>
+            <View style={styles.pButton}>
+              <Button title="devlist"
+                  onPress={
+                    ()=>navigate('devlist',{name:"你好"})
+                  }
+                  />
+            </View>
+            <View style={styles.pButton}>
+              <Button title="leftDrawer"
+                  onPress={
+                    ()=>navigate('leftDrawer',{name:"你好"})
+                  }
+                  />
+            </View>
+            <View style={styles.pButton}>
+              <Button title="OrideHome"
+                  onPress={
+                    ()=>navigate('OrideHome',{name:"你好"})
+                  }
+                  />
+            </View>
+            <View style={styles.pButton}>
+              <Button title="ViewTest"
+                  onPress={
+                    ()=>navigate('ViewTest',{name:"你好"})
+                  }
+                  />
+            </View>
+        </View>
+    </View>)
+   }
+   onClosed=()=>{
+     this.drawerLayout&&this.drawerLayout.openDrawer()
+   }
   render() {
     let {navigate} = this.props.navigation;
     return (
-      <View style={styles.container}>
-          <Text style={styles.desc}>
-            首页测试(每个按钮进入不同UI界面)
-          </Text>
-              <View style={styles.pButton}>
-                <Button title="MoneyMangement"
-                  onPress={
-                    ()=>navigate('moneyMangement',{name:"你好"})
-                  }
-                  />
-              <View style={styles.pButton}>
-                <Button title="login"
-                    onPress={
-                      ()=>navigate('login',{name:"你好"})
-                    }
-                    />
-              </View>
-              <View style={styles.pButton}>
-                <Button title="devlist"
-                    onPress={
-                      ()=>navigate('devlist',{name:"你好"})
-                    }
-                    />
-              </View>
-              <View style={styles.pButton}>
-                <Button title="leftDrawer"
-                    onPress={
-                      ()=>navigate('leftDrawer',{name:"你好"})
-                    }
-                    />
-              </View>
-              <View style={styles.pButton}>
-                <Button title="OrideHome"
-                    onPress={
-                      ()=>navigate('OrideHome',{name:"你好"})
-                    }
-                    />
-              </View>
-              <View style={styles.pButton}>
-                <Button title="ViewTest"
-                    onPress={
-                      ()=>navigate('ViewTest',{name:"你好"})
-                    }
-                    />
-              </View>
+      <DrawerLayoutAndroid
+          drawerWidth={300}
+          drawerPosition={DrawerLayoutAndroid.positions.Left}
+          drawerLockMode='unlocked'
+          onDrawerClose={()=>{}}
+          ref={(instance)=>this.drawerLayout= instance}
+          renderNavigationView={this.leftDrawerView}>
+          <View style={{flex: 1, alignItems: 'center'}}>
+              <OrideHome {...this.props} onClosed ={this.onClosed} />
           </View>
-      </View>
-);
+      </DrawerLayoutAndroid>
+      );
   }
 }
 export default Home;
