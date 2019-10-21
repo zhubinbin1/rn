@@ -14,6 +14,7 @@ import home from './home'
 import ViewTest from './ViewTest'
 import leftDrawer from './leftDrawer'
 import WebViewFragment from './WebViewFragment'
+import SplashPage from './SplashPage'
 import{createAppContainer} from 'react-navigation';
 import {
   Platform,
@@ -42,19 +43,6 @@ const Drawnav=createStackNavigator({
         title: "devlist页面",
       }),
   },
-  login:{
-    screen:login,
-    navigationOptions: ({ navigation }) => ({
-        title: "login页面",
-      }),
-  },
-  home:{
-    screen:home,
-    navigationOptions: ({ navigation }) => ({
-        title: "home页面",
-        header:null
-      }),
-  },
   leftDrawer:{
     screen:leftDrawer,
     navigationOptions: ({ navigation }) => ({
@@ -81,10 +69,17 @@ const Drawnav=createStackNavigator({
         title: "WebViewFragment页面",
       }),
   },
+  SplashPage:{
+    screen:SplashPage,
+    navigationOptions: ({ navigation }) => ({
+        title: "SplashPage",
+        header:null,
+      }),
+  },
 
 },
 {
-  initialRouteName:"home",
+  initialRouteName:"SplashPage",
 }
 )
 

@@ -16,7 +16,7 @@ import {
   Button
 } from 'react-native';
 
- class Devlist extends Component<{}> {
+ class WebViewFragment extends Component<{}> {
 
   render() {
     const {navigate} =this.props&&this.props.navigation;
@@ -42,7 +42,7 @@ import {
 );
   }
 }
-export default Devlist;
+export default WebViewFragment;
 
 const styles = StyleSheet.create({
   container: {

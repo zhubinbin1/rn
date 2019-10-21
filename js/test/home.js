@@ -16,6 +16,10 @@ import OrideHome from './OrideHome'
 import LeftDrawer from './leftDrawer'
 
  class Home extends Component<{}> {
+   static navigationOptions = {
+    title: '首页',
+    header:null,
+  };
    leftDrawerView=()=>{
      return <LeftDrawer {...this.props}/>
    }

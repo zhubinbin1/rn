@@ -14,12 +14,16 @@ import {
   Image,
   Alert,
   TextInput,
+  TouchableOpacity,
   Button,
 } from 'react-native';
 //'http://ip.taobao.com/service/getIpInfo.php?ip=59.108.51.32'
 // let url = 'http://dev.api.o-pay.in/user/login';
  class Login extends Component<{}> {
-
+   static defaultNavigationOptions = {
+    title: '登陆',
+    header:null,
+   };
   render() {
     return (
       <View style={styles.container}>
@@ -48,9 +52,9 @@ import {
 
             }}/>
         </View>
-        <View style={styles.view3}>
+        <TouchableOpacity style={styles.view3}>
             <Text style={styles.forgotText}>Forgot your PIN?</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -86,7 +90,7 @@ const styles = StyleSheet.create({
   },
   forgotText:{
     borderColor: 'black',
-    fontSize: 10,
+    fontSize: 14,
     padding: 2,
   },
   view3:{

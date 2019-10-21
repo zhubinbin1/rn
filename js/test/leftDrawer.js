@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import AsyncStorageUtil,{StorageKey} from './utils/AsyncStorageUtil'
 
 const LIST_DATA = [{title:"Money management",icon:"./imgs/ride_ic_launcher.png"},{title:"Order management",icon:"./imgs/ride_ic_launcher.png"},{title:"Help center",icon:"./imgs/ride_ic_launcher.png"},{title:"setting",icon:"./imgs/ride_ic_launcher.png"}];
 const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
@@ -55,7 +56,7 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
        <TouchableOpacity style={styles.item}
          onPress={
            ()=>{
-
+              this.props.navigation&&this.props.navigation.navigate("WebViewFragment")
            }
          }
          >
@@ -69,7 +70,7 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
        <TouchableOpacity style={styles.item}
          onPress={
            ()=>{
-
+             
            }
          }
          >
@@ -80,6 +81,16 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
            resizeMethod='scale'/>
           <Text style={{marginLeft: 10,fontSize: 15}}>{LIST_DATA[3].title}</Text>
          </TouchableOpacity>
+         <TouchableOpacity style={styles.item}
+           onPress={
+             ()=>{
+                AsyncStorageUtil.delete(StorageKey.USER_TOKEN)
+                this.props.navigation.navigate("Login")
+             }
+           }
+           >
+            <Text style={{marginLeft: 10,fontSize: 20,marginTop: 20,color: "#f00"}}>LOGOUT</Text>
+           </TouchableOpacity>
        </View>
      )
    }
