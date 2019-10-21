@@ -79,13 +79,12 @@ const Drawnav=createStackNavigator({
     screen:WebViewFragment,
     navigationOptions: ({ navigation }) => ({
         title: "WebViewFragment页面",
-        header:null,
       }),
   },
 
 },
 {
-  initialRouteName:"WebViewFragment",
+  initialRouteName:"home",
 }
 )
 

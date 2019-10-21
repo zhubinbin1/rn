@@ -15,6 +15,7 @@
     "react-native-code-push": "^5.7.0",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-screens": "^1.0.0-alpha.23",
+    "react-native-webview": "^7.4.2",
     "react-navigation": "^4.0.10",
     "react-navigation-drawer": "^2.2.2",
     "react-navigation-stack": "^1.9.4",

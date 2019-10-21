@@ -94,7 +94,10 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
     return(
       <View style={{marginLeft: 10,marginRight: 10}}>
         <View style={{backgroundColor:"transparent",height: 2}}></View>
-        <TouchableOpacity style={{padding:10,borderColor: 'black',borderRadius: 5,elevation: 10,backgroundColor:'#eee'}}>
+        <TouchableOpacity style={{padding:10,borderColor: 'black',borderRadius: 5,elevation: 10,backgroundColor:'#eee'}}
+          onPress={()=>{
+            this.props.navigation&&this.props.navigation.navigate("WebViewFragment")
+          }}>
         <View>
           <Text>{item.title}</Text>
             <Text style={{color: "#555",marginTop: 5}}>{item.start_time}-{item.end_time}</Text>
@@ -134,6 +137,7 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
         </View>
         <TouchableOpacity style={styles.stop}
           onPress={()=>{
+
           }}>
           <Text style={{fontSize: 20,color: '#fff',fontWeight: 'bold'}}>stop</Text>
         </TouchableOpacity>
