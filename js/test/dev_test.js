@@ -13,6 +13,7 @@ import login from './login'
 import home from './home'
 import ViewTest from './ViewTest'
 import leftDrawer from './leftDrawer'
+import WebViewFragment from './WebViewFragment'
 import{createAppContainer} from 'react-navigation';
 import {
   Platform,
@@ -74,11 +75,17 @@ const Drawnav=createStackNavigator({
         header:null,
       }),
   },
-
+  WebViewFragment:{
+    screen:WebViewFragment,
+    navigationOptions: ({ navigation }) => ({
+        title: "WebViewFragment页面",
+        header:null,
+      }),
+  },
 
 },
 {
-  initialRouteName:"home",
+  initialRouteName:"WebViewFragment",
 }
 )
 

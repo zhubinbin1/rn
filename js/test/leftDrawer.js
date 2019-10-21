@@ -41,7 +41,7 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
        <TouchableOpacity style={styles.item}
          onPress={
            ()=>{
-
+              this.navigation.navigate('moneyMangement', {name: 'orderManageMent'})
            }
          }
          >

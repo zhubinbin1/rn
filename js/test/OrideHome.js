@@ -117,6 +117,7 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
           <TitleBar title="orderHome"
             onHelp={this.onHelp}
             onClosed={this.onClosed}
+            leftIcon = {require('./imgs/oride_menu.png')}
              />
         <View style={styles.header}>
           {this.headView()}
@@ -124,13 +125,18 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
         <View style={styles.middle}>
           {this.viewPager()}
         </View>
-        <View style={styles.bottom}>
+        <View>
           <FlatList
             data={this.state.showData.data_list}
             keyExtractor={(item: object, index: number) =>index+""}
             renderItem={({item}) => this._renderItem(item)}
             ></FlatList>
         </View>
+        <TouchableOpacity style={styles.stop}
+          onPress={()=>{
+          }}>
+          <Text style={{fontSize: 20,color: '#fff',fontWeight: 'bold'}}>stop</Text>
+        </TouchableOpacity>
       </View>
 );
   }
@@ -149,7 +155,15 @@ const styles = StyleSheet.create({
   },
   middle:{
   },
-  bottom:{
+  stop:{
+    borderRadius: 30,
+    backgroundColor: "#333",
+    padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
 
   },
   viewPager: {
