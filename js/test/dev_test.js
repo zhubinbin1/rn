@@ -17,6 +17,7 @@ import WebViewFragment from './WebViewFragment'
 import SplashPage from './SplashPage'
 import{createAppContainer} from 'react-navigation';
 import SettingPage from './SettingPage'
+import NativePage from './NativePage'
 import {
   Platform,
   StyleSheet,
@@ -81,6 +82,12 @@ const Drawnav=createStackNavigator({
     screen:SettingPage,
     navigationOptions: ({ navigation }) => ({
         title: "SettingPage",
+      }),
+  },
+  NativePage:{
+    screen:NativePage,
+    navigationOptions: ({ navigation }) => ({
+        title: "NativePage",
       }),
   },
 

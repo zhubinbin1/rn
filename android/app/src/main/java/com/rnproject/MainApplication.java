@@ -3,19 +3,22 @@ package com.rnproject;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.react.CompositeReactPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.facebook.react.bridge.Promise;
 import com.microsoft.codepush.react.CodePush;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.rnproject.module.CustomReactPackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 
 public class MainApplication extends Application implements ReactApplication {
-
+    private Promise mPromise;
     private final ReactNativeHost mReactNativeHost =
             new ReactNativeHost(this) {
                 @Override
@@ -35,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
                     // Packages that cannot be autolinked yet can be added manually here, for example:
 //           packages.add(new MyReactNativePackage());
 //                    packages.add(new UpdatePackage());
+                    packages.add(new CustomReactPackage());
                     return packages;
                 }
 

@@ -90,7 +90,8 @@ componentDidMount(){
   this._startFadeAnim()
 }
   onHelp=()=>{
-    // Alert.alert("帮助")
+    // 与原生交互
+    this.props.navigation&&this.props.navigation.navigate("NativePage")
   }
   componentDidUpdate(prevProps, prevState, snapshot){
 
@@ -153,7 +154,7 @@ componentDidMount(){
         </View>
         <TouchableOpacity style={styles.stop}
                  onPress={()=>{
-                   
+
                  }}>
                  <Text style={{fontSize: 20,color: '#fff',fontWeight: 'bold'}}>stop</Text>
         </TouchableOpacity>
@@ -162,7 +163,7 @@ componentDidMount(){
           transform: [
                 {scale: this.state.fadeAnim.interpolate({
                           inputRange: [0, 1],
-                          outputRange: [0, 1],
+                          outputRange: [0, 2],
                   })},
                 {rotateZ: this.state.fadeAnim.interpolate({
                           inputRange: [0,1],
@@ -173,6 +174,12 @@ componentDidMount(){
             ]}>
           <Text sytle={{alignSelf:'center',color:"#0f0"}}>动画</Text>
         </Animated.View>
+        <TouchableOpacity style={styles.goto}
+                 onPress={()=>{
+
+                 }}>
+                 <Text style={{fontSize: 20,color: '#fff',fontWeight: 'bold'}}>flag Down</Text>
+        </TouchableOpacity>
       </View>
 );
   }
@@ -199,6 +206,16 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     position: 'absolute',
     right: 20,
+    bottom: 20,
+  },
+  goto:{
+    borderRadius: 30,
+    backgroundColor: "#0f0",
+    padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    position: 'absolute',
+    left: 20,
     bottom: 20,
   },
   anim:{
