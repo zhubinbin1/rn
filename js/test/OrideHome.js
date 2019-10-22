@@ -15,10 +15,12 @@ import {
   Alert,
   Easing,
   Animated,
+  ToastAndroid,
   TouchableOpacity,
   View
 } from 'react-native';
 import TitleBar from './MoneyManagerMentBar'
+import ApiServices from './net/ApiServices'
 const HEAD_DATA = [{price:"N0.00",name:"Todays income"},
                   {price:"N0.00",name:"Total rides today"},
                   {price:"1.18",name:"Total hours online today"},
@@ -31,6 +33,16 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
        showData:JsonUtil.strToJson(STR),
        fadeAnim : new Animated.Value(0),
      }
+     this._getStatsToday()
+   }
+   _getStatsToday(){
+     ApiServices.statsToday(data=>{
+       if(data.err){
+          ToastAndroid.show(data.err.message, ToastAndroid.SHORT);
+          return
+       }
+       console.log("==="+data)
+     })
    }
    layout(data){
      return <View style={{flexDirection: 'column',alignItems: 'center',flex: 1}}>
