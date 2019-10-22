@@ -35,10 +35,10 @@ static navigationOptions = {
  };
 _getUserToken=async()=>{
     const userToken =await DeviceStorage.get(StorageKey.USER_TOKEN)
-      this.props.navigation.navigate(userToken ? 'Home' : 'Login');
+      // this.props.navigation.navigate(userToken ? 'Home' : 'Login');
     setTimeout(()=>{/*这里模拟请求网络*/
         this.props.navigation.navigate(userToken ? 'Home' : 'Login');
-    },2000)
+    },1000)
   // DeviceStorage.get("USER_INFO").then((infos)=>{
   //      this.props.navigation.navigate(infos ? 'Home' : 'Login');
   // })

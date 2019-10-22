@@ -13,6 +13,8 @@ import {
   ViewPagerAndroid,
   Image,
   Alert,
+  Easing,
+  Animated,
   TouchableOpacity,
   View
 } from 'react-native';
@@ -26,7 +28,8 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
    constructor(props){
      super(props);
      this.state ={
-       showData:JsonUtil.strToJson(STR)
+       showData:JsonUtil.strToJson(STR),
+       fadeAnim : new Animated.Value(0),
      }
    }
    layout(data){
@@ -83,12 +86,25 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
   onClosed=()=>{
     this.props.onClosed&&this.props.onClosed()
   }
-
+componentDidMount(){
+  this._startFadeAnim()
+}
   onHelp=()=>{
     // Alert.alert("帮助")
   }
   componentDidUpdate(prevProps, prevState, snapshot){
 
+  }
+  _startFadeAnim=()=>{
+    this.state.fadeAnim.setValue(0);
+    Animated.timing(                  // 随时间变化而执行动画
+          this.state.fadeAnim,                       // 动画中的变量值
+          {
+            toValue: 1,                   // 透明度最终变为1，即完全不透明
+            duration: 1500,
+            easing: Easing.linear,            // 让动画持续一段时间
+          }
+        ).start(()=>this._startFadeAnim());
   }
   _renderItem(item){
     return(
@@ -102,11 +118,11 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
           <Text>{item.title}</Text>
             <Text style={{color: "#555",marginTop: 5}}>{item.start_time}-{item.end_time}</Text>
         </View>
-        <View style={{position: 'absolute',right: 10,top: 10}}>
-        {
-          item.status===1?<Text style={{color:'#0f0'}}>in progress</Text>:<Text>finished</Text>
-        }
-        </View>
+          <View style={{position: 'absolute',right: 10,top: 10}}>
+          {
+            item.status===1?<Text style={{color:'#0f0'}}>in progress</Text>:<Text>finished</Text>
+          }
+          </View>
         </TouchableOpacity>
       </View>
 
@@ -136,11 +152,27 @@ const STR = "{\"err\":null,\"data_list\":[{\"title\":\"单单奖励1\",\"type\":
             ></FlatList>
         </View>
         <TouchableOpacity style={styles.stop}
-          onPress={()=>{
-
-          }}>
-          <Text style={{fontSize: 20,color: '#fff',fontWeight: 'bold'}}>stop</Text>
+                 onPress={()=>{
+                   
+                 }}>
+                 <Text style={{fontSize: 20,color: '#fff',fontWeight: 'bold'}}>stop</Text>
         </TouchableOpacity>
+        <Animated.View style={[styles.anim,{
+          opacity:this.state.fadeAnim,
+          transform: [
+                {scale: this.state.fadeAnim.interpolate({
+                          inputRange: [0, 1],
+                          outputRange: [0, 1],
+                  })},
+                {rotateZ: this.state.fadeAnim.interpolate({
+                          inputRange: [0,1],
+                          outputRange: ['0deg', '360deg']
+                      })
+                  }]
+          }
+            ]}>
+          <Text sytle={{alignSelf:'center',color:"#0f0"}}>动画</Text>
+        </Animated.View>
       </View>
 );
   }
@@ -168,7 +200,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 20,
     bottom: 20,
-
+  },
+  anim:{
+    borderRadius: 20,
+    backgroundColor: "#0f0",
+    height: 40,
+    width: 40,
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 30,
   },
   viewPager: {
     height: 100,
