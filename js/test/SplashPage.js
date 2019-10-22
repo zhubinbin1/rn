@@ -30,11 +30,12 @@ constructor(props){
   this._getUserToken()
 }
 static navigationOptions = {
-   title: 'Welcome to the app!',
+   title: 'Welcome',
    header:null,
  };
 _getUserToken=async()=>{
     const userToken =await DeviceStorage.get(StorageKey.USER_TOKEN)
+      this.props.navigation.navigate(userToken ? 'Home' : 'Login');
     setTimeout(()=>{/*这里模拟请求网络*/
         this.props.navigation.navigate(userToken ? 'Home' : 'Login');
     },2000)

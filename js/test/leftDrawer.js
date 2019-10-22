@@ -70,7 +70,7 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
        <TouchableOpacity style={styles.item}
          onPress={
            ()=>{
-             
+             this.props.navigation.navigate("SettingPage")
            }
          }
          >
