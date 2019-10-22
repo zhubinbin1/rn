@@ -85,6 +85,7 @@ const BOTTOM_DATA = ["Riders \nRecruitment","Reward \nfor Sharing"];
            onPress={
              ()=>{
                 AsyncStorageUtil.delete(StorageKey.USER_TOKEN)
+                AsyncStorageUtil.delete(StorageKey.USER_INFO)
                 this.props.navigation.navigate("Login")
              }
            }

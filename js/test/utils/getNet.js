@@ -15,6 +15,7 @@ import {
   TextInput,
   Button,
 } from 'react-native';
+export var HOST_NAME ="http://dev.api.o-pay.in";
  class getNet extends Component {
      static  async getMoviesFromApi(callBack) {
         try {
@@ -69,7 +70,7 @@ import {
 
       } catch (error) {
             console.log('错误问题: ', error.message);
-            }
+      }
    }
    static send(method, url, data, callback) {
         let request;
@@ -77,14 +78,16 @@ import {
             request = new Request(url, {
                 method: 'GET',
                 headers: ({
-                    'Content-Type': 'application/json'
+                  'user-agent': 'Android/9/Xiaomi/Redmi 7/driver/4.11.1000/8C234EAA2621D4DCA075AAD715FD5EFE/ead40cac8079f2e7825835dd118c318b/CN/en/39.90993/116.416735/network/1571452092',
+                  'Content-Type': 'application/json'
                 })
             });
         } else if (method === 'post') {
             request = new Request(url, {
                 method: 'POST',
                 headers: ({
-                    'Content-Type': 'application/json'
+                  'user-agent': 'Android/9/Xiaomi/Redmi 7/driver/4.11.1000/8C234EAA2621D4DCA075AAD715FD5EFE/ead40cac8079f2e7825835dd118c318b/CN/en/39.90993/116.416735/network/1571452092',
+                  'Content-Type': 'application/json'
                 }),
                 body: JSON.stringify(data)
             });
@@ -92,6 +95,8 @@ import {
         fetch(request).then((response) => response.json())
             .then((jsonData) => {
                 callback(jsonData);
+            }).catch((error) => {
+              console.error(error);
             });
     }
 
